@@ -1,14 +1,24 @@
 var gulp       = require('gulp'),
-    livereload = require('gulp-livereload');
+   // livereload = require('gulp-livereload'),
+   connect     = require('gulp-connect');
+
+var rootDir = './';
 
 gulp.task('html', function(){
   gulp.src('*.html')
-    .pipe(livereload());
+    .pipe(connect.reload());
+});
+
+gulp.task('connect', function(){
+  connect.server({
+    root: rootDir,
+    livereload: true
+  });
 });
 
 gulp.task('watch', function(){
-  livereload.listen();
+//  livereload.listen();
   gulp.watch('*.html', ['html']);
 });
 
-gulp.task('default',['watch']);
+gulp.task('default',['connect','watch']);
