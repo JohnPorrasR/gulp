@@ -1,9 +1,14 @@
-var gulp = require('gulp');
+var gulp       = require('gulp'),
+    livereload = require('gulp-livereload');
 
 gulp.task('html', function(){
-  console.log('Tarea personalizada');
+  gulp.src('*.html')
+    .pipe(livereload());
 });
 
-gulp.task('default', function(){
-  console.log('hola mundo');
+gulp.task('watch', function(){
+  livereload.listen();
+  gulp.watch('*.html', ['html']);
 });
+
+gulp.task('default',['watch']);
