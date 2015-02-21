@@ -1,0 +1,13 @@
+body{
+  background-color: #cacaca;
+}
+
+li{
+	list-style: none;
+	display: inline-block;
+}
+
+li > a {
+	text-decoration: none;
+}
+

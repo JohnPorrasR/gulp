@@ -4,6 +4,11 @@ var gulp       = require('gulp'),
 
 var rootDir = './';
 
+gulp.task('css', function(){
+  gulp.src('*.css')
+    .pipe(connect.reload());
+});
+
 gulp.task('html', function(){
   gulp.src('*.html')
     .pipe(connect.reload());
@@ -19,6 +24,7 @@ gulp.task('connect', function(){
 gulp.task('watch', function(){
 //  livereload.listen();
   gulp.watch('*.html', ['html']);
+  gulp.watch('*.css', ['css']);
 });
 
 gulp.task('default',['connect','watch']);
