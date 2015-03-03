@@ -1,6 +1,7 @@
 var gulp       = require('gulp'),
    // livereload = require('gulp-livereload'),
    connect     = require('gulp-connect'),
+   concat      = require('gulp-concat'),
    uglify      = require('gulp-uglify');
 
 var rootDir = './';
@@ -11,7 +12,9 @@ gulp.task('css', function(){
 });
 
 gulp.task('js', function(){
-  gulp.src('js/*.js')
+  return gulp.src(['js/variables.js', 'js/rojo.js', 'js/verde.js'])
+    .pipe(connect.reload())
+    .pipe(concat('colores.js'))
     .pipe(uglify())
     .pipe(gulp.dest('lib'))
 });
